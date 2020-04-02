@@ -8,6 +8,12 @@ using PostListItems.Models;
 
 namespace PostListItems.Controllers
 {
+    public class Car
+    {
+        public string Make { get; set; }
+        public string Model { get; set; }
+    }
+
     public class HomeController : Controller
     {
         public IActionResult Index()
@@ -15,29 +21,10 @@ namespace PostListItems.Controllers
             return View();
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public IActionResult AddCar(List<Car> cars)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return Redirect("/");
         }
     }
 }
